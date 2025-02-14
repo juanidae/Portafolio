@@ -48,7 +48,7 @@ Te indicara cual sera tu amigo secreto.
 
 <h2>:game_die:DEMO:game_die:</h2>
 
-https://juanidae.github.io/Portafolio/challenge-amigo-secreto_esp-main/
+https://portafolio-kil6.vercel.app/
 
 <h1>🛠 Tecnologías utilizadas</h1>
 
