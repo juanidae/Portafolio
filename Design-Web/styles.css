@@ -1,10 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 /* Estilos generales */
 body {
+    height: 150vh;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    box-sizing: border-box;
 }
 
 /* Encabezado */
@@ -76,4 +84,14 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.Texto-destacado {
+    color: #ee1ddc;
+    font-weight: bold;
+}
+
+.Urgente {
+    color: red;
+    font-weight: bold;
 }
