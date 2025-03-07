@@ -1,89 +1,21 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-
-/* Estilos generales */
-body {
-    height: 150vh;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
     box-sizing: border-box;
 }
 
-/* Encabezado */
-header {
-    background: #0044cc;
-    color: white;
-    padding: 20px;
-    text-align: center;
+/* Estilos generales */
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-h1 {
+
+.titulo_destacado {
     margin: 0;
     font-size: 2em;
-}
-
-h2 {
-    margin: 5px 0 0;
-    font-size: 1.2em;
-}
-
-/* Sección principal */
-section {
-    padding: 20px;
-    background: white;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-section img {
-    display: block;
-    margin: 10px auto;
-    max-width: 100%;
-    height: auto;
-}
-
-h3 {
-    color: #0044cc;
-    border-bottom: 2px solid #0044cc;
-    padding-bottom: 5px;
-}
-
-/* Lista de servicios */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    background: #e0e0e0;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-ul li:hover {
-    background: #d0d0d0;
-}
-
-/* Pie de página */
-footer {
-    text-align: center;
-    background: #333;
-    color: white;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
 }
 
 .Texto-destacado {
@@ -95,3 +27,15 @@ footer {
     color: red;
     font-weight: bold;
 }
+
+.presentacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5%;
+  }
+
+  .presentacion-texto {
+    width: 615px;
+}
+
