@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css2?family=Switzer:wght@300;400;600&display=swap);
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primer-color: #ffffff;
+    --segundo-color: #5F5F5F;
+    --tercer-color: #22D4FD;
+    --fuente-principal: 'Switzer', sans-serif;
+    --bg-boton: #D94100;
+    --bg-principal: #1A1A1A;
+}
+
+
+html,body {
+    
+    width: 1400px;
+    height: 50vh; /* Que ocupe toda la pantalla */
+    background-color: var(--bg-principal);
+    
+}
+
+.presentacion{
+
+    color: var(--primer-color);
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.header{
+
+    width: 1250px;
+    height: 50px; /* Ajusta la altura según necesites */
+    color:var(--primer-color);
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el contenido */
+    padding: 25px;
+    box-sizing: border-box;
+    margin: 25px 86px 26px 86px; /* Ajusta los márgenes según necesites */
+
+    
+}
+
+.titulo__pagina{
+    font-size: 4.25rem;
+    color:var(--segundo-color);
+    font-family: var(--fuente-principal);
+    
+}
+
+.resaltado{
+    font-weight: 600;
+    color: var(--primer-color);
+}
+
+.menu{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap : 40px;
+    /* position: fixed; Para que se mantenga fijo */
+    right: 10%; /* Lo coloca a la derecha */
+}
+
+.header__menu__link{
+    text-decoration: none;
+    color: var(--primer-color);
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 10px;
+    border: 2px solid var(--tercer-color);
+    font-size: 1.25rem;
+}
+
+.presentacion_seccion{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 110px; /* Ajusta el margen superior según necesites */
+    margin: 86px; /* Ajusta los márgenes según necesites */
+    
+}
+
+.contratame{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--fuente-principal);
+    font-size: 20px;
+    color: var(--primer-color);
+    gap: 10px;
+    border-radius: 10px;
+    padding: 10px 30px; /* Espaciado interno */
+    background-color: var(--bg-boton);
+    margin: 86px; /* Ajusta los márgenes según necesites */
+    
+}
+
+/* Seccion de imagenes */
+
+.amigo_secreto{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px; /* Ajusta el margen superior según necesites */
+    
+}
