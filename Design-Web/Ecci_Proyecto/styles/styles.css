@@ -1,0 +1,224 @@
+
+* {
+
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+}
+
+:root {
+    --color-primario: #67A1DA;
+    --color-secundario: #ffffff;
+    --color-texto: #333333;
+    --color-texto-secundario: #000000;
+    --color-button: #FF6347;
+    --fuente-principal: 'Roboto', sans-serif;
+    --tamaño-titulo: 1rem;
+    --tamaño-texto-mediano: 18px;
+    --tamaño-texto-pequeño: 16px;
+  }
+
+.body {
+    font-family : var(--fuente-principal);
+    background-color : var(--color-primario);
+    color : var(--color-texto);
+    justify-content: center; /* alinea horizontal */
+    align-items: center;     /* alinea vertical */
+    height: 98vh;           /* altura total de pantalla */
+    display: flex;
+    flex-direction: column; /* ← IMPORTANTE */
+    background-image: url('../assets/login.jpg'); /* ruta a tu imagen*/
+    background-size: cover; /* ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header {
+    color :var(--color-secundario);
+    /* background-color:var(--color-primario); */
+    width: 500px;
+    padding : 5px 0;
+    font-size: var(--tamaño-titulo);
+    text-align: center;
+}
+
+.login-format {
+    background-color: var(--color-secundario);  /* Fondo blanco del cuadro */
+    border-radius: 20px;
+    box-shadow: 0 4px 15px #00000033;
+    height: 50vh;
+    width: 500px;
+    height: 500PX;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+ 
+}
+
+.form {
+    display : flex;
+    flex-direction : column; /* ← IMPORTANTE */
+    justify-content : center; /* alinea horizontal */
+}
+
+.label{
+    font-size : var(--tamaño-texto-mediano);
+    color : var(--color-texto-secundario);
+    margin-bottom : 15px;
+    margin-top: 15px;
+    font-weight : bold;
+    
+    
+}
+
+.input-password {
+    width : 100%; 
+    padding : 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border : 1px solid #ccc;
+    border-radius : 10px;
+    font-size: var(--tamaño-texto-pequeño);
+}
+
+.forgot_password {
+    color :var(--color-texto-secundario);
+    text-align : center;
+    text-align: right;
+}
+
+
+.button_session{
+    color : var(--color-secundario);
+    background-color: var(--color-primario);
+    border : none;
+    padding : 10px 20px;
+    border-radius : 10px;
+    cursor : pointer;
+    font-size : var(--tamaño-texto-mediano);
+    margin-top : 20px;
+}
+
+.texto {
+    text-align: center;
+    font-size: 15px;
+    color: var(--color-texto-secundario);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .texto::before,
+  .texto::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background:#ccc; 
+    margin: 0 10px;
+  }
+
+.button_account{
+    background-color :var(--color-button);
+    color : var(--color-secundario);
+    border : none;
+    padding : 10px 20px;
+    border-radius : 10px;
+    cursor : pointer;
+    font-size : var(--tamaño-texto-mediano);
+    margin-top : 10px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px ;
+    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.logo {
+    margin: 10px;
+    width : 200px;
+    height : 50px;
+    border-radius : 50%;
+    margin-bottom : 10px;
+}
+
+.caption {
+    font-size : 15px;
+    color :var(--color-texto-secundario);
+    text-align : center;
+    margin-bottom : 20px;
+    padding-top: 10px;
+}
+
+.footer {
+    text-align : center;
+    font-size : 15px;
+    width: 500px;
+    color: var(--color-secundario);
+
+}
+
+/* Media Query para móviles */
+@media (max-width: 768px) {
+    .login-format {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 1.1rem;
+    }
+
+    .label {
+        font-size: 1rem;
+    }
+
+    .input-password {
+        font-size: 1rem;
+    }
+
+    .button_session {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+
+    .texto {
+        font-size: 14px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .footer {
+        font-size: 14px;
+    }
+}
+
+/* Media Query para pantallas más pequeñas (móviles) */
+@media (max-width: 480px) {
+    .header {
+        font-size: 1rem;
+    }
+
+    .login-format {
+        padding: 10px;
+        width: 95%;
+    }
+
+    .button_session {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .texto {
+        font-size: 13px;
+    }
+
+    .logo {
+        width: 100px;
+    }
+}
