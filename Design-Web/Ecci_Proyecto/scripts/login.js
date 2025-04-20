@@ -13,17 +13,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     emailError.textContent = "";
     passwordError.textContent = "";
 
-    // Validación básica
-    if (!email) {
-        emailError.textContent = "El correo es obligatorio.";
-        return;
-    }
-
-    if (!password) {
-        passwordError.textContent = "La contraseña es obligatoria.";
-        return;
-    }
-
     // Enviar datos al backend (Node-RED)
     fetch("http://localhost:1880/login", {
         method: "POST",
