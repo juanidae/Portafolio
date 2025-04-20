@@ -18,6 +18,15 @@
     --tamaño-texto-pequeño: 16px;
   }
 
+  /* Alertas Pagina */
+
+  .error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-top: 4px;
+    display: block;
+  }
+
 .body {
     font-family : var(--fuente-principal);
     background-color : var(--color-primario);
@@ -48,7 +57,7 @@
     box-shadow: 0 4px 15px #00000033;
     height: 50vh;
     width: 500px;
-    height: 500PX;
+    height: 510PX;
     padding: 20px;
     padding-left: 30px;
     padding-right: 30px;

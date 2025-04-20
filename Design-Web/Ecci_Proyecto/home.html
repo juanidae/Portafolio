@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de IoT</title>
+    <!-- Aquí puedes agregar los estilos o enlaces a un archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Incluir una librería de gráficos como Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>IoT Dashboard</h1>
+    </header>
+
+    <main>
+        <section id="dataSection">
+            <h2>Datos de Sensores</h2>
+            <div id="sensorData">
+                <!-- Aquí se mostrarán los datos de los sensores -->
+                <p>Temperatura: <span id="temperature">Cargando...</span> °C</p>
+                <p>Humedad: <span id="humidity">Cargando...</span> %</p>
+            </div>
+        </section>
+
+        <section id="controlSection">
+            <h2>Control de Dispositivos</h2>
+            <div id="controlPanel">
+                <button id="turnOn">Encender dispositivo</button>
+                <button id="turnOff">Apagar dispositivo</button>
+            </div>
+        </section>
+
+        <section id="chartSection">
+            <h2>Gráfico de Temperatura</h2>
+            <canvas id="temperatureChart"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Proyecto IoT - Desarrollado por Juan González</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
