@@ -1,0 +1,79 @@
+/* Reseteo de márgenes y paddings */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;  /* El cuerpo ocupará todo el ancho de la ventana */
+    height: 100vh; /* El cuerpo ocupará toda la altura de la ventana */
+}
+
+
+.header {
+
+    padding: 10px 0; /* Agregar padding para la cabecera */
+}
+
+.div__logo {
+    display: flex;
+    justify-content: space-between; /* Espacio entre logo y menú */
+    align-items: center; /* Centrar verticalmente el logo */
+    margin-right: 100px;
+    justify-content: flex-start; /* Centrar verticalmente el logo */
+    
+}
+
+.figure_1 img, .figure_2 img {
+    max-width: 100px; /* Ajusta el tamaño de las imágenes si es necesario */
+    height: auto; /* Mantén la relación de aspecto */
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+ .nav__ul {
+    display: flex;
+    margin-right: 300px;
+    list-style-type: none;
+   
+} 
+
+.nav__li {
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #343a40; /* Color del texto */
+    font-size: 36px;
+}
+
+.nav__li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #343a40; /* Color del texto */
+  }
+
+  .nav__li a:hover {
+  color: #007bff; /* Cambio de color en hover */
+}
+
+/* Estilo para el enlace de "Inicio" */
+.nav__li a[href="inicio.html"] {
+    color: #FFA62B; /* Color azul */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  
+  /* Estilo para el enlace de "Servicios" */
+  .nav__li a[href="Servicios.html"] {
+    color: #FFA62B; /* Color verde */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+
+  .figure_2 {
+    display: flex;    
+    background-color: #f8f9fa; /* Color de fondo */
+  }
