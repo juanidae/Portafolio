@@ -6,28 +6,101 @@
     box-sizing: border-box;
 }
 
-body {
-    width: 100%;  /* El cuerpo ocupará todo el ancho de la ventana */
-    height: 100vh; /* El cuerpo ocupará toda la altura de la ventana */
+:root {
+    --color-primario: #FFA62B; /* Color azul */
+    --color-secundario: #000000; /* Color gris oscuro */
+    --color-terciario: #007bff; /* Color azul claro */
+    --color-cuaternario: #FFFFFF; /* Color blanco */
 }
 
+body {
+    min-height: 100vh; /* 100% del alto de la ventana */
+    max-width: 100%;
+    background-image: url('../assets/pexels-akin-victor-10202865\ 1.png');
+    background-size: cover;       /* Ajusta la imagen al tamaño del body */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center;  /* Centra la imagen */
+}
 
 .header {
-
-    padding: 10px 0; /* Agregar padding para la cabecera */
+    padding-top:  10px; /* Agregar padding para la cabecera */
+    padding-left: 15px; 
+    padding-right: 26px;
 }
+
+.titulo__h1 {
+    font-size: 36px; /* Tamaño de la fuente */
+    color: var(--color-cuaternario); /* Color del texto */
+    gap: 20px; /* Espacio entre elementos dentro del h1 si hay más de uno */
+    padding-top: 100px;
+    padding-left: 40px; 
+}
+
+.titulo___h1 {
+    font-size: 36px; /* Tamaño de la fuente */
+    color: var(--color-cuaternario); /* Color del texto */
+    gap: 20px; /* Espacio entre elementos dentro del h1 si hay más de uno */
+    padding-top: 20px;
+    padding-left: 40px; 
+}
+
+.titulo__h2 {
+    font-size: 20px; /* Tamaño de la fuente */
+    color: var(--color-cuaternario); /* Color del texto */
+    gap: 20px; /* Espacio entre elementos dentro del h2 si hay más de uno */
+    padding-top: 20px;
+    padding-left: 40px; 
+}
+
+.titulo___h2 {
+    font-size: 20px; /* Tamaño de la fuente */
+    color: var(--color-cuaternario); /* Color del texto */
+    gap: 20px; /* Espacio entre elementos dentro del h2 si hay más de uno */
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-bottom: 10px;
+}
+
+.div__boton {
+    display: flex;
+    padding-top: 20px; /* Espacio superior */
+    padding-bottom: 20px; /* Espacio inferior */
+    padding-left: 40px; /* Espacio izquierdo */
+    padding-right: 40px; /* Espacio derecho */
+}
+
+.button {
+    background-color: var(--color-primario); /* color inicial */
+    color: var(--color-cuaternario);
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    padding-top: 11px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;  /* Suaviza todos los cambios */
+  }
+  
+  .button:hover {
+    transform: translateY(-5px) scale(1.1); /* Se mueve y se agranda */
+    background-color: var(--color-primario); /* Azul más oscuro al pasar el mouse */
+  }
+  
+
 
 .div__logo {
     display: flex;
-    justify-content: space-between; /* Espacio entre logo y menú */
-    align-items: center; /* Centrar verticalmente el logo */
-    margin-right: 100px;
-    justify-content: flex-start; /* Centrar verticalmente el logo */
-    
-}
+    align-items: center; /* Centra verticalmente el logo */
+    margin-right: auto;
+    gap: 20px;                 /* Espacio entre elementos dentro del logo si hay más de uno */
+    padding-left: 20px;        /* Espacio desde el borde izquierdo */
+  }
+  
 
 .figure_1 img, .figure_2 img {
-    max-width: 100px; /* Ajusta el tamaño de las imágenes si es necesario */
+    /* 1 Ajusta el tamaño de las imágenes si es necesario */
     height: auto; /* Mantén la relación de aspecto */
 }
 
@@ -39,7 +112,6 @@ body {
 
  .nav__ul {
     display: flex;
-    margin-right: 300px;
     list-style-type: none;
    
 } 
@@ -48,32 +120,41 @@ body {
     margin: 0 15px;
     font-size: 18px;
     text-decoration: none; /* Elimina el subrayado de los enlaces */
-    color: #343a40; /* Color del texto */
+    color: var(--color-secundario); /* Color del texto */
     font-size: 36px;
 }
 
 .nav__li a {
     text-decoration: none; /* Elimina el subrayado de los enlaces */
-    color: #343a40; /* Color del texto */
+    color: var(--color-secundario); /* Color del texto */
   }
 
   .nav__li a:hover {
-  color: #007bff; /* Cambio de color en hover */
+  color: var(--color-terciario); /* Cambio de color en hover */
 }
 
 /* Estilo para el enlace de "Inicio" */
-.nav__li a[href="inicio.html"] {
-    color: #FFA62B; /* Color azul */
+.nav__li a[href="index.html"] {
+    color: var(--color-primario); /* Color azul */
     text-decoration: none; /* Elimina el subrayado */
   }
   
   /* Estilo para el enlace de "Servicios" */
   .nav__li a[href="Servicios.html"] {
-    color: #FFA62B; /* Color verde */
+    color: var(--color-primario); /* Color verde */
     text-decoration: none; /* Elimina el subrayado */
   }
 
   .figure_2 {
     display: flex;    
-    background-color: #f8f9fa; /* Color de fondo */
+  }
+
+  .footer_text {
+
+    color: var(--color-cuaternario);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+
   }

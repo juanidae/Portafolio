@@ -1,0 +1,140 @@
+/* Reseteo de márgenes y paddings */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: #FFA62B; /* Color azul */
+    --color-secundario: #000000; /* Color negro */
+    --color-terciario: #007bff; /* Color azul claro */
+    --color-cuaternario: #FFFFFF; /* Color blanco */
+    --color-quintario: #555555; /* Color gris oscuro */
+ }
+
+body {
+    min-height: 100vh; /* 100% del alto de la ventana */
+    max-width: 100%;
+
+}
+
+.header {
+    padding-top:  10px; /* Agregar padding para la cabecera */
+    padding-left: 15px; 
+    padding-right: 26px;
+    height: 400px;
+    background-image: url('../assets/cabecera.webp'); /* Cambia la ruta a la imagen de la cabecera */
+    background-size: cover;       /* Ajusta la imagen al tamaño del body */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center;  /* Centra la imagen */
+}
+
+.div__logo {
+    display: flex;
+    align-items: center; /* Centra verticalmente el logo */
+    margin-right: auto;
+    gap: 20px;                 /* Espacio entre elementos dentro del logo si hay más de uno */
+    padding-left: 20px;        /* Espacio desde el borde izquierdo */
+  }
+  
+
+.figure_1 img, .figure_2 img {
+    /* 1 Ajusta el tamaño de las imágenes si es necesario */
+    height: auto; /* Mantén la relación de aspecto */
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+ .nav__ul {
+    display: flex;
+    list-style-type: none;
+   
+} 
+
+.nav__li {
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: var(--color-secundario); /* Color del texto */
+    font-size: 36px;
+}
+
+.nav__li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: var(--color-secundario); /* Color del texto */
+  }
+
+  .nav__li a:hover {
+  color: var(--color-terciario); /* Cambio de color en hover */
+}
+
+/* Estilo para el enlace de "Inicio" */
+.nav__li a[href="index.html"] {
+    color: var(--color-primario); /* Color azul */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  
+  /* Estilo para el enlace de "Servicios" */
+  .nav__li a[href="Servicios.html"] {
+    color: var(--color-primario); /* Color verde */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+
+  .titulo__h1 {
+    font-size: 50px; /* Tamaño de la fuente */
+    color: var(--color-primario); /* Color del texto */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+  }
+
+  .parrafo {
+    font-size: 20px; /* Tamaño de la fuente */
+    color: var(--color-quintario); /* Color del texto */
+    justify-content :left;
+    margin: 50px; /* Espacio lateral */
+  }
+  
+  .titulo__h2 {
+    font-size: 20px; /* Tamaño de la fuente */
+    color: var(--color-secundario); /* Color del texto */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+    margin-bottom: 20px; /* Espacio inferior */
+  }
+
+  .footer {
+    background-color: var(--color-quintario); /* Color de fondo */
+    font-size: 24px; /* Tamaño de la fuente */
+  }
+
+  .footer_text {
+    color: var(--color-cuaternario);
+    width: 100%;
+    display: flex; /* Alinea los elementos en una fila */
+    align-items: center; /* alinear verticalmente al centro */
+    
+  }
+
+  
+
+  .footer__ul a {
+    justify-content: center;
+    text-decoration: none; /* Quita el subrayado */
+    color: var(--color-cuaternario);
+}
+
+  .pie__li  {
+
+    color: var(--color-cuaternario); /* Color del texto */
+    font-size: 24px;
+    justify-content: right;
+    display: flex;
+  }
+   
