@@ -1,0 +1,253 @@
+/* Reseteo de márgenes y paddings */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: #FFA62B; /* Color naranja */
+    --color-secundario: #000000; /* Color negro */
+    --color-terciario: #007bff; /* Color azul claro */
+    --color-cuaternario: #FFFFFF; /* Color blanco */
+    --color-quintario: #555555; /* Color gris oscuro */
+    --color-boton : #e68f00; /* Naranja oscuro */
+}
+
+body {
+
+    min-height: 100vh; /* 100% del alto de la ventana */
+    max-width: 100%;
+}
+
+.header {
+    padding-top:  10px; /* Agregar padding para la cabecera */
+    padding-left: 15px; 
+    padding-right: 26px;
+}
+
+.div__logo {
+    display: flex;
+    align-items: center; /* Centra verticalmente el logo */
+    margin-right: auto;
+    gap: 20px;                 /* Espacio entre elementos dentro del logo si hay más de uno */
+    padding-left: 20px;        /* Espacio desde el borde izquierdo */
+  }
+  
+
+.figure_1 img, .figure_2 img {
+    /* 1 Ajusta el tamaño de las imágenes si es necesario */
+    height: auto; /* Mantén la relación de aspecto */
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+ .nav__ul {
+    display: flex;
+    list-style-type: none;
+   
+} 
+
+.nav__li {
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: var(--color-secundario); /* Color del texto */
+    font-size: 36px;
+}
+
+.nav__li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: var(--color-secundario); /* Color del texto */
+  }
+
+  .nav__li a:hover {
+  color: var(--color-terciario); /* Cambio de color en hover */
+}
+
+/* Estilo para el enlace de "Inicio" */
+.nav__li a[href="index.html"] {
+    color: var(--color-primario); /* Color azul */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  
+  /* Estilo para el enlace de "Servicios" */
+  .nav__li a[href="Servicios.html"] {
+    color: var(--color-primario); /* Color verde */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+
+.menu__servicios {
+    display: flex;
+    gap: 20px; /* Espacio entre la imagen y el texto */
+    padding-top: 40px;
+}
+
+.img__obrero {
+    width: 600px; /* Ajusta el tamaño de la imagen */
+    height: 565px;
+    object-fit: contain; /* Mantiene la proporción sin distorsionar */
+    margin-top: 5px; /* Ajusta la imagen hacia abajo si la cabeza está muy alta */
+    vertical-align: middle; /* Alinea la imagen verticalmente con el texto */
+}
+
+.text__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.parrafo__servicios__1, h1_servicios, h2__servicios {
+    margin: 0;
+    padding: 5px 0;
+    line-height: 1.3;
+}
+
+.parrafo__servicios__1 {
+    font-size: 25px;
+    color: var(--color-primario);
+    padding-bottom: 10px;
+}
+
+.h1_servicios {
+    padding-top: 10px;
+    font-size: 40px;
+    color: var(--color-secundario);
+    padding-bottom: 20px;
+}
+
+.h2__servicios {
+    font-size: 30px;
+    color: var(--color-quintario);
+    padding-bottom: 10px;
+}
+
+.parrafo__servicios__2 {
+    padding-top: 40px;
+    font-size: 40px;
+    color: var(--color-quintario);
+    padding-bottom: 10px;
+}
+
+.img__servicios {
+    display: flex; /* Alinea las figuras horizontalmente */
+    gap: 150px; /* Espacio entre las figuras */
+}
+
+.figure_1, .figure_2 {
+    display: flex; /* Flexbox dentro de cada figura */
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+}
+
+.figure_1 img, .figure_2 img {
+    max-width: 150px; /* Ajusta el tamaño de las imágenes */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.figure_1 {
+
+    padding-left: 20px; /* Espacio entre la imagen y la descripción */
+
+}
+
+figcaption {
+    margin-left: 10px; /* Espacio entre la imagen y la descripción */
+    font-size: 18px; /* Tamaño del texto */
+    color:var(--color-quintario); /* Color del texto */
+}
+
+.img__insumos {
+    padding-top: 30px;
+    display: flex; /* Flexbox dentro de cada figura */
+    width: 100%; /* Ajusta el tamaño de la imagen */
+    height: 300px;
+    position: absolute;
+    object-fit:cover; /* Mantiene la proporción sin distorsionar */
+    z-index: -1; /* Envía la imagen al fondo */
+  
+}
+
+.section__insumos {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según lo que necesites */
+  }
+  
+  .diseño__insumos {
+    position: absolute;
+    padding-left: 80px;
+    padding-top: 50px;
+    height: 270px;
+    width: 680px;
+    background: var(--color-primario);
+    justify-items: left;
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
+    top: 10%;
+    color: var(--color-secundario);
+    font-size: 32px;
+    z-index: 1; /* Asegura que el texto esté por encima de la imagen */
+  }
+
+  .conteido__insumos {
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+
+  .Servicios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+    font-size: 48px;
+  }
+
+  .servicios__arquitectura {
+    display: flex;
+    justify-content: space-between;
+    gap: 120px; /* Espacio entre la imagen y el texto */
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    font-size: 48px;
+  }
+
+  .img__pie__pagina {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción sin distorsionar */
+    z-index: -1; /* Envía la imagen al fondo */
+  }
+
+  .scroll_boton {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primario);
+    color: var(--color-cuaternario);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none; /* Oculto por defecto */
+    z-index: 1000;
+    transition: all 0.3s ease;
+   }
+
+   .scroll_boton:hover {
+    background-color: var(--color-boton);
+    transform: scale(1.1); /* Se agranda un poco*/
+   }
+ 
+  

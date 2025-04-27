@@ -7,12 +7,13 @@
 }
 
 :root {
-    --color-primario: #FFA62B; /* Color azul */
+    --color-primario: #FFA62B; /* Color naranja */
     --color-secundario: #000000; /* Color negro */
     --color-terciario: #007bff; /* Color azul claro */
     --color-cuaternario: #FFFFFF; /* Color blanco */
     --color-quintario: #555555; /* Color gris oscuro */
- }
+    --color-boton : #e68f00; /* Naranja oscuro */
+  }
 
 body {
     min-height: 100vh; /* 100% del alto de la ventana */
@@ -112,29 +113,88 @@ body {
   .footer {
     background-color: var(--color-quintario); /* Color de fondo */
     font-size: 24px; /* Tamaño de la fuente */
-  }
+  
+  }  /* Espacio entre elementos */
 
   .footer_text {
     color: var(--color-cuaternario);
     width: 100%;
     display: flex; /* Alinea los elementos en una fila */
     align-items: center; /* alinear verticalmente al centro */
+    padding-top: 40px;
+    padding-left: 40px; /* Espacio desde el borde izquierdo */
     
   }
 
-  
-
-  .footer__ul a {
+  .footer__ul {
     justify-content: center;
     text-decoration: none; /* Quita el subrayado */
-    color: var(--color-cuaternario);
+    padding-left: 750px;
+    list-style: none; /* Quita los puntos de la lista */
+    
 }
-
-  .pie__li  {
-
-    color: var(--color-cuaternario); /* Color del texto */
+  .pie__li a {
+    text-decoration: none; /* Quita el subrayado */
+   
     font-size: 24px;
     justify-content: right;
     display: flex;
+    color: var(--color-cuaternario);
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
   }
+
+  .pie__li:hover, .pie__li:hover a {
+
+    color: var(--color-terciario); /* Cambio de color en hover */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    
+  }
+
    
+  .redes__sociales {
+    display: flex;
+    gap: 20px; /* Espacio entre iconos */
+    padding-top: 20px; /* Espacio superior */
+    padding-left: 40px;
+  }
+
+  .figure__3:hover {
+    transform: translateY(-5px) scale(1.1); /* Se mueve y se agranda */ 
+   }
+
+   .figure__4:hover {
+    transform: translateY(-5px) scale(1.1); /* Se mueve y se agranda */ 
+   }
+
+   .figure__5:hover {
+    transform: translateY(-5px) scale(1.1); /* Se mueve y se agranda */ 
+   }
+
+   .correo {
+    padding-left: 40px; /* Espacio desde el borde izquierdo */
+    padding-bottom: 10px;
+    color: var(--color-cuaternario)
+   }
+
+   .scroll_boton {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-primario);
+    color: var(--color-cuaternario);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none; /* Oculto por defecto */
+    z-index: 1000;
+    transition: all 0.3s ease;
+   }
+
+   .scroll_boton:hover {
+    background-color: var(--color-boton);
+    transform: scale(1.1); /* Se agranda un poco*/
+   }
