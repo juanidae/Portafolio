@@ -1,0 +1,41 @@
+{
+
+  "name": "gestion-empleados",
+  
+  "version": "1.0.0",
+  
+  "description": "API para gestionar empleados en una empresa.",
+  
+  "main": "index.js",
+  
+  "scripts": {
+  
+  "dev": "nodemon Backend/index.js"
+  
+  },
+  
+  "keywords": [ ],
+  
+  "author": "Juan Manuel",
+  
+  "license": "ISC",
+  
+  "dependencies": {
+  
+  "cors": "^2.8.5",
+  
+  "express": "^4.17.1",
+  
+  "mongoose": "^5.12.14",
+  
+  "morgan": "^1.10.0"
+  
+  },
+  
+  "devDependencies": {
+  
+  "nodemon": "^2.0.7"
+  
+  }
+  
+  }
