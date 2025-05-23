@@ -22,7 +22,8 @@ app.use(cors({origin: 'http://localhost:4200'})); // método para comunicar con 
 
 // rutas de nuestro servidor
 
-app .use('/api/empleados',require('./routes/empleado.routes'));
+app.use('/api/empleados',require('./routes/empleado.routes'));
+app.use('/api/servicios',require('./routes/servicio.routes'));
 
 // Iniciando el servidor
 
