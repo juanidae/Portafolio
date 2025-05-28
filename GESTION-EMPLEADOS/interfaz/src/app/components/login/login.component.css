@@ -1,64 +1,107 @@
-form {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.form-group {
+.titulo {
+  text-align: center;
+  color: #000000;
+  background-color: #1f64cc;
+  border-radius: 10px;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
-
-label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #333;
+/* Centrado del contenedor */
+.login-container {
+  height: 300px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #1f64cc; /* Fondo opcional */
 }
 
+
+/* Contenedor del formulario */
+form {
+  background-color: #1f64cc;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Inputs */
 input.form-control {
   width: 100%;
   padding: 0.75rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+/* Estilo para campos inválidos */
+input.invalid {
+  border-color: #e74c3c;
+  background-color: #fff5f5;
+}
+
+/* Mensajes de error */
+.error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Botón */
+.btn {
+  background-color: #3498db;
+  color: #000000;
+  border: none;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón deshabilitado */
+.btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* Hover del botón */
+.btn:hover:not(:disabled) {
+  background-color: #ffffff;
+}
+
+/* Margen entre campos */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Acciones */
+.form-actions {
+  margin-top: 1rem;
 }
 
 input.form-control:focus {
-  border-color: #1976d2;
+  border-color: #3498db;
   outline: none;
-}
-
-input.invalid {
-  border-color: #e53935;
-}
-
-.error {
-  color: #e53935;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  display: block;
-}
-
-.form-actions {
-  text-align: center;
-}
-
-button.btn {
-  background-color: #1976d2;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button.btn:disabled {
-  background-color: #90caf9;
-  cursor: not-allowed;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
