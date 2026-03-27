@@ -47,8 +47,6 @@ while True:
     issues = data.get("issues", [])
     all_issues.extend(issues)
 
-    print(f"Traje {len(issues)} registros, total: {len(all_issues)}")
-
     if data.get("isLast", True):
         break
 
@@ -68,8 +66,10 @@ while True:
     "id_estado": fields.get("status", {}).get("id"),
     "Puntos Historia": fields.get("customfield_10030"),
     "id_sprint": sprints[0]["id"] })
-    df = pd.DataFrame(rows)
         
-    print(df.head())
-
- 
+    df = pd.DataFrame(rows)
+    
+    ruta = r"C:\Users\silve\Documents\Portafolio\ANALISIS DE DATOS\REPORTES BASE SAMM PBI/incidencias.csv"
+        
+    # Guardar en CSV
+    df.to_csv(ruta, index=False, encoding="utf-8-sig")
