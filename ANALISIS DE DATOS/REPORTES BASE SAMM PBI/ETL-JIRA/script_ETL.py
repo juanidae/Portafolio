@@ -65,33 +65,33 @@ while True:
 
 # ── Creacion Dataframe Fact ─────────────────────────────────────────────  
     
-    rows = []
-    for issue in all_issues:
-        fields = issue["fields"]
-        sprints = fields.get("customfield_10020", [])
-        fixVersions = fields.get("fixVersions", [])
+rows = []
+for issue in all_issues:
+    fields = issue["fields"]
+    sprints = fields.get("customfield_10020", [])
+    fixVersions = fields.get("fixVersions", [])
 
-        rows.append({
+    rows.append({
     "id_incidencia": issue["id"],
     "incidencia": issue["key"],
     "id_epica": fields.get("parent", {} ).get("id"),
-    "id_prioridad": fields.get("priority", {} ).get("id"),
+    "id_prioridad": fields.get("priority", {} ).get("id") if fields.get("priority") else None,
     "id_tipo": fields.get("issuetype", {} ).get("id"),
     "id_estado": fields.get("status", {}).get("id"),
     "Story Points": fields.get("customfield_10030"),
     "id_sprint": sprints[0]["id"] if sprints else None,
     "Version" : fixVersions [0]["name"] if fixVersions else None })
         
-    fact = pd.DataFrame(rows)
+fact = pd.DataFrame(rows)
     
 # ── Convert type Data ─────────────────────────────────────────────
    
-    fact['id_incidencia'] = fact['id_incidencia'].astype('int32')
-    fact['id_epica'] = pd.to_numeric(fact['id_epica'], errors='coerce').astype('Int32')
-    fact['id_prioridad'] = pd.to_numeric(fact['id_prioridad'], errors='coerce').astype('Int32')
-    fact['id_tipo'] = pd.to_numeric(fact['id_tipo'], errors='coerce').astype('Int32')
-    fact['id_estado'] = pd.to_numeric(fact['id_estado'], errors='coerce').astype('Int32')
-    fact['Story Points'] = pd.to_numeric(fact['Story Points'], errors='coerce').astype('Int32')
+fact['id_incidencia'] = fact['id_incidencia'].astype('int32')
+fact['id_epica'] = pd.to_numeric(fact['id_epica'], errors='coerce').astype('Int32')
+fact['id_prioridad'] = pd.to_numeric(fact['id_prioridad'], errors='coerce').astype('Int32')
+fact['id_tipo'] = pd.to_numeric(fact['id_tipo'], errors='coerce').astype('Int32')
+fact['id_estado'] = pd.to_numeric(fact['id_estado'], errors='coerce').astype('Int32')
+fact['Story Points'] = pd.to_numeric(fact['Story Points'], errors='coerce').astype('Int32')
     
 
 # ── Creacion Dataframe Dim_sprint ─────────────────────────────────────────────  
@@ -125,7 +125,7 @@ dim_sprint = (
 fact = fact[fact["id_sprint"].isin(dim_sprint["id_sprint"])]
 
 # ── Exportar ──────────────────────────────────────────────────
-ruta = r"C:\Users\silve\Documents\Portafolio\ANALISIS DE DATOS\REPORTES BASE SAMM PBI\incidencias.xlsx"
+ruta = r"C:\Users\silve\Documents\Portafolio\ANALISIS DE DATOS\REPORTES BASE SAMM PBI\ETL-JIRA\incidencias.xlsx"
 
 with pd.ExcelWriter(ruta, engine="openpyxl") as writer:
      fact.to_excel(writer,sheet_name="fact_issues", index=False)
