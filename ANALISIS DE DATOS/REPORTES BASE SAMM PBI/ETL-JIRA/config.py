@@ -14,6 +14,8 @@ load_dotenv()
 # ── Credenciales ──────────────────────────────────────────────
 EMAIL     = os.getenv("CORREO")
 API_TOKEN = os.getenv("TOKEN")
+assert EMAIL and API_TOKEN 
+
 AUTH      = HTTPBasicAuth(EMAIL, API_TOKEN)
 
 # ── Endpoint ──────────────────────────────────────────────────
@@ -25,7 +27,7 @@ PARAMS = {
     "jql": "project != 'Support Idae' AND Sprint is not EMPTY ORDER BY key",
     "fields": "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions"
 }
-MAX_RESULTS = 100
+MAX_RESULTS = 50
 
 # ── Ruta de exportación ───────────────────────────────────────
 OUTPUT_PATH = (

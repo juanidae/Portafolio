@@ -36,10 +36,10 @@ def fetch_all_issues() -> list[dict]:
         next_token = data.get("nextPageToken")
 
         # Detener si no hay más páginas o si la página actual está incompleta
-        if not next_token or len(issues) < MAX_RESULTS: #valor tomado de config.py
+        if data.get("isLast", True):
             break
-        
-    
+
+        next_token = data.get("nextPageToken")    
     print(f"Issues extraídos: {len(all_issues)}")
     return all_issues
 
