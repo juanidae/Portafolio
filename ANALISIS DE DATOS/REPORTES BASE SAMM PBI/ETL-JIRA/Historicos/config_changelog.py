@@ -1,12 +1,11 @@
 # ============================================================
 # Autor: Juan Manuel Gonzalez
-# Fecha: 01/04/2026
+# Fecha: 04/04/2026
 # Descripción: Configuración de credenciales y constantes del ETL
 # ============================================================
 
 import os
 from dotenv import load_dotenv
-import requests
 from requests.auth import HTTPBasicAuth
 
 load_dotenv()
@@ -24,8 +23,9 @@ JIRA_URL = "https://softwaresamm.atlassian.net/rest/api/3/search/jql"
 # ── JQL y campos a extraer ────────────────────────────────────
 PARAMS = {
     
-    "jql": "project != 'Support Idae' AND Sprint is not EMPTY ORDER BY key",
-    "fields": "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions"
+    "jql"    : "project != 'Support Idae' AND Sprint is not EMPTY ORDER BY key",
+    "expand" :  "changelog",
+    "fields" : "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions"
 }
 MAX_RESULTS = 50
 

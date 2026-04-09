@@ -5,8 +5,10 @@
 # ============================================================
 
 import pandas as pd
-from extractor import fetch_all_issues
-
+try:
+    from Incidencias.extractor import fetch_all_issues
+except ModuleNotFoundError:
+    from extractor import fetch_all_issues
 
 def build_fact_issues(all_issues: list[dict]) -> pd.DataFrame:
     """
