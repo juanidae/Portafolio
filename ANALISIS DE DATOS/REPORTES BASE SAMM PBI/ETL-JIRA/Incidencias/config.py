@@ -30,5 +30,5 @@ MAX_RESULTS = 50
 
 # ── Ruta de exportación ───────────────────────────────────────
 OUTPUT_PATH = (
-    r"C:\Users\silve\Documents\Portafolio\ANALISIS DE DATOS\REPORTES BASE SAMM PBI\ETL-JIRA\incidencias.xlsx"
+    r"C:\Users\Admin\Documents\Portafolio\ANALISIS DE DATOS\REPORTES BASE SAMM PBI\ETL-JIRA\incidencias.xlsx"
 )
