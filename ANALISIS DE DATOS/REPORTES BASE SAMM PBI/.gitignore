@@ -1,6 +1,19 @@
+# Power BI
 *.pbix
-*.env
+
+# Datos / outputs ETL
 *.csv
 *.xlsx
 *.xls
+
+# Python
+__pycache__/
 *.pyc
+
+# Entornos
+.env
+.venv/
+env/
+
+# VS Code
+.vscode/
