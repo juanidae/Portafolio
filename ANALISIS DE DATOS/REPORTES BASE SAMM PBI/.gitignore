@@ -4,3 +4,4 @@
 *.xlsx
 *.xls
 *.venv
+*.pyc
