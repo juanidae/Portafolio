@@ -31,6 +31,7 @@ def build_fact_issueschangelog(all_issues_changelog: list[dict]) -> pd.DataFrame
             "Story Points"  : fields.get("customfield_10030"),
             "id_sprint"     : max(sprints, key=lambda s: s.get("id", 0))["id"] if sprints else None,
             "Version"       : fixVersions[0]["name"] if fixVersions else None,
+            "Descripcion"   : fields.get ("summary")
         })
 
     fact = pd.DataFrame(rows)

@@ -24,7 +24,7 @@ def fetch_changelog_all_issues() -> list[dict]:
             "jql"        : "project != 'Support Idae' AND Sprint is not EMPTY ORDER BY key",
             "maxResults" : MAX_RESULTS,
             "expand"     : "changelog",
-            "fields"     : "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions"
+            "fields"     : "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions,summary"
         }
 
         if next_token:
