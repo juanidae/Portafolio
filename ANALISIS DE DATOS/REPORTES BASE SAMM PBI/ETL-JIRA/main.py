@@ -15,8 +15,8 @@ from Historicos.transformer_changelog import build_fact_issueschangelog, build_d
 
 def export_to_excel(fact: pd.DataFrame, dim_sprint: pd.DataFrame,
                     dim_status: pd.DataFrame,dim_type: pd.DataFrame,
-                    dim_priority: pd.DataFrame,dim_epic: pd.DataFrame,fact_issueschangelog:pd.DataFrame,dim_sprint_changelog: pd.DataFrame,
-                    ruta: str) -> None:
+                    dim_priority: pd.DataFrame,dim_epic: pd.DataFrame,fact_issueschangelog:pd.DataFrame,
+                    dim_sprint_changelog: pd.DataFrame,fact_changelog_all: pd.DataFrame,ruta: str) -> None:
     """Exporta los DataFrames al archivo Excel en las hojas correspondientes."""
     with pd.ExcelWriter(ruta, engine="openpyxl") as writer:
         fact.to_excel(writer,      sheet_name="fact_issues", index=False)
@@ -27,6 +27,8 @@ def export_to_excel(fact: pd.DataFrame, dim_sprint: pd.DataFrame,
         dim_epic.to_excel(writer, sheet_name="Dim_Epic",  index=False)
         fact_issueschangelog.to_excel(writer, sheet_name="fact_issueschangelog",  index=False)
         dim_sprint_changelog.to_excel(writer, sheet_name="dim_sprint_changelog",  index=False)
+        fact_changelog_all.to_excel(writer, sheet_name = "fact_changelog_all", index=False)
+
 
 
     print(f"Archivo guardado en: {ruta}")
@@ -48,6 +50,10 @@ def main():
     fact_issueschangelog = build_fact_issueschangelog(all_issues_changelog)
     dim_sprint_changelog = build_dim_sprint_changelog(all_issues_changelog)
     fact_issueschangelog = filter_fact_by_sprints_changelog(fact_issueschangelog, dim_sprint_changelog)
+    fact_changelog_all   = build_fact_issueschangelog(all_issues_changelog)
+    fact_changelog_all   = filter_fact_by_sprints_changelog(fact_changelog_all,dim_sprint)
+
+
 
     # # 3. Load
     export_to_excel(fact,
@@ -58,6 +64,7 @@ def main():
                     dim_epic,
                     fact_issueschangelog,
                     dim_sprint_changelog,
+                    fact_changelog_all,
                     OUTPUT_PATH)
 
 
