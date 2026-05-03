@@ -105,6 +105,35 @@ def filter_fact_by_sprints_changelog(fact: pd.DataFrame, dim_sprint_changelog: p
     """
     return fact[fact["id_sprint"].isin(dim_sprint_changelog["id_sprint"])].reset_index(drop=True)
 
+def build_dim_sprint_all(all_issues_changelog: list[dict], top_n: int = 6) -> pd.DataFrame:
+    """
+    Construye la dimensión de sprints (dim_sprint_all) a partir de los historicos issues.
+    Devuelve los últimos 6 sprints únicos ordenados por fecha de inicio.
+    """
+    sprints = []
+    for issue in all_issues_changelog:
+        sprint_list = issue["fields"].get("customfield_10020") or []
+        for sprint in sprint_list:
+            sprints.append({
+                "id_sprint"    : sprint.get("id"),
+                "Sprint"       : sprint.get("name"),
+                "estado"       : sprint.get("state"),
+                "fecha_inicio" : sprint.get("startDate"),
+                "fecha_fin"    : sprint.get("endDate"),
+                "fecha_cierre" : sprint.get("completeDate"),
+            })
+
+    dim_sprint_all = (
+        pd.DataFrame(sprints)
+        .drop_duplicates(subset="id_sprint")
+        .sort_values("id_sprint", ascending=False)
+        .head(top_n)
+        .reset_index(drop=True)
+    )
+
+    return dim_sprint_all
+
+
 
 # fa = build_fact_issueschangelog(fetch_changelog_all_issues())
 # print(fa)

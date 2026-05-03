@@ -10,13 +10,13 @@ from Incidencias.extractor            import fetch_all_issues
 from Incidencias.transformer          import build_fact_issues, build_dim_sprint, filter_fact_by_sprints
 from Incidencias.transformer          import build_dim_status, build_dim_type, build_dim_priority, build_dim_epic
 from Historicos.extractor_changelog   import fetch_changelog_all_issues
-from Historicos.transformer_changelog import build_fact_issueschangelog, build_dim_sprint_changelog, filter_fact_by_sprints_changelog
+from Historicos.transformer_changelog import build_fact_issueschangelog, build_dim_sprint_changelog, filter_fact_by_sprints_changelog, build_dim_sprint_all
 
 
 def export_to_excel(fact: pd.DataFrame, dim_sprint: pd.DataFrame,
                     dim_status: pd.DataFrame,dim_type: pd.DataFrame,
                     dim_priority: pd.DataFrame,dim_epic: pd.DataFrame,fact_issueschangelog:pd.DataFrame,
-                    dim_sprint_changelog: pd.DataFrame,fact_changelog_all: pd.DataFrame,ruta: str) -> None:
+                    dim_sprint_changelog: pd.DataFrame,dim_sprint_all: pd.DataFrame,fact_changelog_all: pd.DataFrame,ruta: str) -> None:
     """Exporta los DataFrames al archivo Excel en las hojas correspondientes."""
     with pd.ExcelWriter(ruta, engine="openpyxl") as writer:
         fact.to_excel(writer,      sheet_name="fact_issues", index=False)
@@ -27,6 +27,7 @@ def export_to_excel(fact: pd.DataFrame, dim_sprint: pd.DataFrame,
         dim_epic.to_excel(writer, sheet_name="Dim_Epic",  index=False)
         fact_issueschangelog.to_excel(writer, sheet_name="fact_issueschangelog",  index=False)
         dim_sprint_changelog.to_excel(writer, sheet_name="dim_sprint_changelog",  index=False)
+        dim_sprint_all.to_excel(writer, sheet_name="dim_sprint_all",  index=False)
         fact_changelog_all.to_excel(writer, sheet_name = "fact_changelog_all", index=False)
 
 
@@ -50,9 +51,8 @@ def main():
     fact_issueschangelog = build_fact_issueschangelog(all_issues_changelog)
     dim_sprint_changelog = build_dim_sprint_changelog(all_issues_changelog)
     fact_issueschangelog = filter_fact_by_sprints_changelog(fact_issueschangelog, dim_sprint_changelog)
-    fact_changelog_all   = build_fact_issueschangelog(all_issues_changelog)
-    fact_changelog_all   = filter_fact_by_sprints_changelog(fact_changelog_all,dim_sprint)
-
+    dim_sprint_all       = build_dim_sprint_all(all_issues_changelog,top_n=6)
+    fact_changelog_all   = filter_fact_by_sprints_changelog(build_fact_issueschangelog(all_issues_changelog),dim_sprint_all)
 
 
     # # 3. Load
@@ -64,6 +64,7 @@ def main():
                     dim_epic,
                     fact_issueschangelog,
                     dim_sprint_changelog,
+                    dim_sprint_all,
                     fact_changelog_all,
                     OUTPUT_PATH)
 
