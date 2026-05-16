@@ -64,6 +64,7 @@ def build_dim_sprint(all_issues: list[dict], top_n: int = 6) -> pd.DataFrame:
 
     dim_sprint = (
         pd.DataFrame(sprints)
+        .query("estado != 'future'")
         .drop_duplicates(subset="id_sprint")
         .sort_values("id_sprint", ascending=False)
         .head(top_n)
