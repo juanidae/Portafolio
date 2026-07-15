@@ -126,7 +126,7 @@ def build_dim_sprint_all(all_issues_changelog: list[dict], top_n: int = 6) -> pd
 
     dim_sprint_all = (
         pd.DataFrame(sprints)
-        .query("estado != 'active'")
+        .query("estado != 'future'")
         .drop_duplicates(subset="id_sprint")
         .sort_values("id_sprint", ascending=False)
         .head(top_n)
