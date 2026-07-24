@@ -21,7 +21,7 @@ def fetch_all_issues() -> list[dict]:
     while True:
         PARAMS = {
             
-            "jql"        : "project != 'Support Idae' AND Sprint is not EMPTY ORDER BY key",
+            "jql"        : "Sprint is not EMPTY ORDER BY key",
             "maxResults" : MAX_RESULTS,
             "fields"     : "parent,status,priority,issuetype,customfield_10030,customfield_10020,fixVersions,summary"
         }

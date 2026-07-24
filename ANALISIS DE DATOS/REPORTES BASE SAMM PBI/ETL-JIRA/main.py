@@ -53,14 +53,13 @@ def main():
     # =========================
     # 2. TRANSFORM
     # =========================
-    fact                 = build_fact_issues(all_issues)
-    dim_sprint           = build_dim_sprint(all_issues, top_n=6)
-    fact                 = filter_fact_by_sprints(fact, dim_sprint)
-
-    dim_status           = build_dim_status(all_issues)
-    dim_type             = build_dim_type(all_issues)
-    dim_priority         = build_dim_priority(all_issues)
-    dim_epic             = build_dim_epic(all_issues)
+    fact, issues_filtrados = build_fact_issues(all_issues)
+    dim_sprint   = build_dim_sprint(issues_filtrados, top_n=6)
+    fact         = filter_fact_by_sprints(fact, dim_sprint)
+    dim_status   = build_dim_status(issues_filtrados)
+    dim_type     = build_dim_type(issues_filtrados)
+    dim_priority = build_dim_priority(issues_filtrados)
+    dim_epic     = build_dim_epic(issues_filtrados)
 
     fact_issueschangelog = build_fact_issueschangelog(all_issues_changelog)
     dim_sprint_changelog = build_dim_sprint_changelog(all_issues_changelog)

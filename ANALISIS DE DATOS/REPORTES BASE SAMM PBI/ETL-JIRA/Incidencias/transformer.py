@@ -10,47 +10,88 @@ try:
 except ModuleNotFoundError:
     from extractor import fetch_all_issues
 
-def build_fact_issues(all_issues: list[dict]) -> pd.DataFrame:
+def build_fact_issues(all_issues: list[dict]):
     """
-    Construye el DataFrame de hechos (fact_issues) a partir de la lista de issues.
-    Incluye conversión de tipos de datos.
+    Construye la tabla de hechos y devuelve además los issues filtrados
+    para reutilizarlos en las dimensiones.
     """
+
     rows = []
+    issues_filtrados = []
+
     for issue in all_issues:
-        fields      = issue["fields"]
-        sprints     = fields.get("customfield_10020") or []
+
+        fields = issue["fields"]
+
+        # Obtener los sprints del issue
+        sprints = fields.get("customfield_10020") or []
+
+        # Conservar únicamente los sprints del equipo Desarrollo
+        sprints = [
+            s for s in sprints
+            if s.get("name", "").startswith("Sprint Semana")
+        ]
+
+        # Si el issue no tiene un sprint válido, no lo procesamos
+        if not sprints:
+            continue
+
+        # Reemplazar el historial por los sprints filtrados
+        fields["customfield_10020"] = sprints
+
+        # Guardar el issue limpio para las dimensiones
+        issues_filtrados.append(issue)
+
+        # Sprint más reciente
+        ultimo_sprint = max(
+            sprints,
+            key=lambda s: s.get("id", 0)
+        )
+
         fixVersions = fields.get("fixVersions") or []
 
         rows.append({
-            "id_incidencia" : issue["id"],
-            "incidencia"    : issue["key"],
-            "id_epica"      : fields.get("parent",    {}).get("id"),
-            "id_prioridad"  : fields.get("priority",  {}).get("id") if fields.get("priority") else None,
-            "id_tipo"       : fields.get("issuetype", {}).get("id"),
-            "id_estado"     : fields.get("status",    {}).get("id"),
-            "Story Points"  : fields.get("customfield_10030"),
-            "id_sprint"     : max(sprints, key=lambda s: s.get("id", 0))["id"] if sprints else None,
-            "Version"       : fixVersions[0]["name"] if fixVersions else None,
-            "Descripcion"   : fields.get ("summary")
+            "id_incidencia": issue["id"],
+            "incidencia": issue["key"],
+            "id_epica": fields.get("parent", {}).get("id"),
+            "id_prioridad": fields.get("priority", {}).get("id")
+                            if fields.get("priority") else None,
+            "id_tipo": fields.get("issuetype", {}).get("id"),
+            "id_estado": fields.get("status", {}).get("id"),
+            "Story Points": fields.get("customfield_10030"),
+            "id_sprint": ultimo_sprint["id"],
+            "Version": fixVersions[0]["name"] if fixVersions else None,
+            "Descripcion": fields.get("summary")
         })
 
     fact = pd.DataFrame(rows)
 
-    # ── Conversión de tipos ───────────────────────────────────
+    # Conversión de tipos
     fact["id_incidencia"] = fact["id_incidencia"].astype("int32")
-    for col in ["id_epica", "id_prioridad", "id_tipo", "id_estado", "Story Points","id_sprint"]:
-        fact[col] = pd.to_numeric(fact[col], errors="coerce").astype("Int32")
-    
-    return fact
+
+    for col in [
+        "id_epica",
+        "id_prioridad",
+        "id_tipo",
+        "id_estado",
+        "Story Points",
+        "id_sprint",
+    ]:
+        fact[col] = pd.to_numeric(
+            fact[col],
+            errors="coerce"
+        ).astype("Int32")
+
+    return fact, issues_filtrados
 
 
-def build_dim_sprint(all_issues: list[dict], top_n: int = 6) -> pd.DataFrame:
+def build_dim_sprint(issues_filtrados: list[dict], top_n: int = 6) -> pd.DataFrame:
     """
     Construye la dimensión de sprints (dim_sprint) a partir de los issues.
     Devuelve los últimos 6 sprints únicos ordenados por fecha de inicio.
     """
     sprints = []
-    for issue in all_issues:
+    for issue in issues_filtrados:
         sprint_list = issue["fields"].get("customfield_10020") or []
         for sprint in sprint_list:
             sprints.append({
@@ -82,14 +123,14 @@ def filter_fact_by_sprints(fact: pd.DataFrame, dim_sprint: pd.DataFrame,) -> pd.
     return fact[fact["id_sprint"].isin(dim_sprint["id_sprint"])].reset_index(drop=True)
 
 
-def build_dim_status(all_issues: list[dict]) -> pd.DataFrame:
+def build_dim_status(issues_filtrados: list[dict]) -> pd.DataFrame:
     """
     Construye la dimensión de estados (dim_status) a partir de los issues.
     Devuelve los estados únicos ordenados alfabéticamente.
     """
     status = []
 
-    for issue in all_issues:
+    for issue in issues_filtrados:
         status_list = issue['fields'].get('status')
         status.append({
             
@@ -107,14 +148,14 @@ def build_dim_status(all_issues: list[dict]) -> pd.DataFrame:
 
     return dim_status
 
-def build_dim_type(all_issues: list[dict]) -> pd.DataFrame:
+def build_dim_type(issues_filtrados: list[dict]) -> pd.DataFrame:
     """
     Construye la dimensión de tipos (dim_type) a partir de los issues.
     Devuelve los tipos únicos ordenados alfabéticamente.
     """
     types = []
 
-    for issue in all_issues:
+    for issue in issues_filtrados:
         type_list = issue['fields'].get('issuetype')
         types.append({
             
@@ -132,14 +173,14 @@ def build_dim_type(all_issues: list[dict]) -> pd.DataFrame:
 
     return dim_type
 
-def build_dim_priority(all_issues: list[dict]) -> pd.DataFrame:
+def build_dim_priority(issues_filtrados: list[dict]) -> pd.DataFrame:
     """
     Construye la dimensión de prioridades (dim_prioridad) a partir de los issues.
     Devuelve las prioridades únicas ordenadas alfabéticamente.
     """
     priority = []
 
-    for issue in all_issues:
+    for issue in issues_filtrados:
         priority_list = issue['fields'].get('priority')
         priority.append({
             
@@ -170,14 +211,14 @@ def build_dim_priority(all_issues: list[dict]) -> pd.DataFrame:
     return dim_priority
 
 
-def build_dim_epic(all_issues: list[dict]) -> pd.DataFrame:
+def build_dim_epic(issues_filtrados: list[dict]) -> pd.DataFrame:
     """
     Construye la dimensión de epics (dim_epic) a partir de los issues.
     Devuelve los epics únicos ordenados alfabéticamente.
     """
     epic = []
 
-    for issue in all_issues:
+    for issue in issues_filtrados:
         parent = issue["fields"].get("parent")
         if parent and isinstance(parent, dict):
             epic.append({
